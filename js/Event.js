@@ -25,21 +25,21 @@ OregonH.Event.eventTypes = [
     notification: 'negative',
     stat: 'food',
     value: -10,
-    text: 'Worm infestation. Food lost: ',
+    text: 'Snorlax stole your food! Food lost: ',
   },
   {
     type: 'STAT-CHANGE',
     notification: 'negative',
     stat: 'money',
     value: -50,
-    text: 'Pick pockets steal $',
+    text: 'You lost the battle. Pay the trainer',
   },
   {
     type: 'STAT-CHANGE',
     notification: 'negative',
     stat: 'oxen',
     value: -1,
-    text: 'Ox flu outbreak. Casualties: ',
+    text: 'The pokemon ran away! Pokeballs lost: ',
   },
   {
     type: 'STAT-CHANGE',
@@ -60,7 +60,7 @@ OregonH.Event.eventTypes = [
     notification: 'positive',
     stat: 'oxen',
     value: 1,
-    text: 'Found wild oxen. New oxen: ',
+    text: 'Found pokeballs. New pokeballs: ',
   },
   {
     type: 'SHOP',
@@ -98,17 +98,17 @@ OregonH.Event.eventTypes = [
   {
     type: 'ATTACK',
     notification: 'negative',
-    text: 'Bandits are attacking you',
+    text: 'Team Rocket is attacking you',
   },
   {
     type: 'ATTACK',
     notification: 'negative',
-    text: 'Bandits are attacking you',
+    text: 'Team Rocket is attacking you',
   },
   {
     type: 'ATTACK',
     notification: 'negative',
-    text: 'Bandits are attacking you',
+    text: 'Team Rocket is attacking you',
   },
 ];
 
