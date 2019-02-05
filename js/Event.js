@@ -11,14 +11,14 @@ OregonH.Event.eventTypes = [
     notification: 'negative',
     stat: 'crew',
     value: -3,
-    text: 'Food intoxication. Casualties: ',
+    text: 'Your pokemon got knocked out in the trainer battle. Casualties: ',
   },
   {
     type: 'STAT-CHANGE',
     notification: 'negative',
     stat: 'crew',
     value: -4,
-    text: 'Flu outbreak. Casualties: ',
+    text: 'The wild pokemon knocked out your pokemon! Casualties: ',
   },
   {
     type: 'STAT-CHANGE',
@@ -32,7 +32,7 @@ OregonH.Event.eventTypes = [
     notification: 'negative',
     stat: 'money',
     value: -50,
-    text: 'You lost the battle. Pay the trainer',
+    text: 'You lost the battle. Pay the trainer ',
   },
   {
     type: 'STAT-CHANGE',
