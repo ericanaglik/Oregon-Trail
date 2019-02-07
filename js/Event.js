@@ -110,12 +110,12 @@ OregonH.Event.eventTypes = [
   {
     type: 'ATTACK',
     notification: 'negative',
-    text: 'Team Rocket is attacking you',
+    text: 'A wild pokemon appeared!',
   },
   {
     type: 'ATTACK',
     notification: 'negative',
-    text: 'Team Rocket is attacking you',
+    text: 'A wild pokemon appeared!',
   },
 ];
 
