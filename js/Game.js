@@ -97,7 +97,7 @@ OregonH.Game.updateGame = function updateGame() {
 
   // game over no food
   if (this.caravan.food === 0) {
-    this.ui.notify('Your caravan starved to death', 'negative');
+    this.ui.notify('You ran out of food. You have to go home before you starve!', 'negative');
     this.gameActive = false;
     return;
   }
@@ -114,14 +114,14 @@ OregonH.Game.updateGame = function updateGame() {
   // check if everyone died
   if (this.caravan.crew <= 0) {
     this.caravan.crew = 0;
-    this.ui.notify('Everyone died', 'negative');
+    this.ui.notify('All of your pokemon have been knocked out. You passed out!', 'negative');
     this.gameActive = false;
     return;
   }
 
   // check win game
   if (this.caravan.distance >= OregonH.FINAL_DISTANCE) {
-    this.ui.notify('You have returned home!', 'positive');
+    this.ui.notify('You have made it to the Elite Four! Prepare for your biggest battle yet!', 'positive');
     this.gameActive = false;
     return;
   }

@@ -63,14 +63,21 @@ OregonH.Event.eventTypes = [
     text: 'Found pokeballs. New pokeballs: ',
   },
   {
+    type: 'STAT-CHANGE',
+    notification: 'positive',
+    stat: 'crew',
+    value: 1,
+    text: 'You captured the wild pokemon! Pokemon added: ',
+  },
+  {
     type: 'SHOP',
     notification: 'neutral',
     text: 'You have found a shop',
     products: [
       { item: 'food', qty: 20, price: 50 },
-      { item: 'oxen', qty: 1, price: 200 },
+      { item: 'pokeballs', qty: 1, price: 200 },
       { item: 'firepower', qty: 2, price: 50 },
-      { item: 'crew', qty: 5, price: 80 },
+      { item: 'revive', qty: 5, price: 80 },
     ],
   },
   {
@@ -79,9 +86,9 @@ OregonH.Event.eventTypes = [
     text: 'You have found a shop',
     products: [
       { item: 'food', qty: 30, price: 50 },
-      { item: 'oxen', qty: 1, price: 200 },
+      { item: 'pokeballs', qty: 1, price: 200 },
       { item: 'firepower', qty: 2, price: 20 },
-      { item: 'crew', qty: 10, price: 80 },
+      { item: 'revive', qty: 10, price: 80 },
     ],
   },
   {
@@ -90,9 +97,9 @@ OregonH.Event.eventTypes = [
     text: 'Smugglers sell various goods',
     products: [
       { item: 'food', qty: 20, price: 60 },
-      { item: 'oxen', qty: 1, price: 300 },
+      { item: 'pokeballs', qty: 1, price: 300 },
       { item: 'firepower', qty: 2, price: 80 },
-      { item: 'crew', qty: 5, price: 60 },
+      { item: 'revive', qty: 5, price: 60 },
     ],
   },
   {
@@ -111,6 +118,7 @@ OregonH.Event.eventTypes = [
     text: 'Team Rocket is attacking you',
   },
 ];
+
 
 OregonH.Event.generateEvent = function generateEvent() {
   // pick random one
