@@ -22,7 +22,7 @@ body {
  
 #journey {
   height: 100%;
-  background-image: url("https://i.ytimg.com/vi/YGXHO0n6930/maxresdefault.jpg");
+  background: lightblue;
   background-repeat: no-repeat;
   background-size: auto;
 }
@@ -45,7 +45,7 @@ body {
  
 #caravan {
   position: absolute;
-  bottom: 30px;
+  bottom: 5px;
   left: 0;
 }
  
