@@ -21,6 +21,37 @@ OregonH.ENEMY_GOLD_AVG = 50;
 OregonH.Game = {};
 OregonH.Caravan = {};
 
+// ------------------------------------------
+class Caravan {
+
+  constructor() {
+
+  }
+
+  init({ day, distance, crew, food, oxen, money, firepower }) {
+    this.day = day;
+    this.distance = distance;
+    this.crew = crew;
+    this.food = food;
+    this.oxen = oxen;
+    this.money = money;
+    this.firepower = firepower;
+  }
+
+  updateWeight() {
+
+  }
+
+  consumeFood() {
+
+  }
+
+  updateDistance() {
+
+  }
+}
+// ------------------------------------------
+
 OregonH.Caravan.init = function init(stats) {
   this.day = stats.day;
   this.distance = stats.distance;
