@@ -69,11 +69,11 @@ OregonH.UI.fight = function fight() {
   if (damage < this.caravan.crew) {
     this.caravan.crew -= damage;
     this.caravan.money += gold;
-    this.notify(`${damage} people were killed fighting`, 'negative');
+    this.notify(`${damage} pokemon were knocked out in battle`, 'negative');
     this.notify(`Found $ ${gold}`, 'gold');
   } else {
     this.caravan.crew = 0;
-    this.notify('Everybody died in the fight', 'negative');
+    this.notify('All of your pokemon have been knocked out!', 'negative');
   }
 
   // resume journey
