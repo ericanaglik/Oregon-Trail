@@ -7,55 +7,56 @@ OregonH.UI = {};
 
 class UI {
   // show a notification in the message area
-  OregonH.UI.notify = function notify(message, type) {
-  document.getElementById('updates-area').innerHTML = `<div class="update-${type}">Day ${Math.ceil(this.caravan.day)}: ${message}</div> ${document.getElementById('updates-area').innerHTML}`;
-}
-
-//refresh visual caravan stats
-refreshStats() {
-  // Destructure some objects for easy access
-  const {
-    day, distance, crew, oxen, food, money, firepower, weight, capacity,
-  } = this.caravan;
-  const { ceil, floor } = Math;
-
-  // modify the dom
-  document.getElementById('stat-day').innerHTML = `${ceil(day)}`; // Math.ceil(this.caravan.day);
-  document.getElementById('stat-distance').innerHTML = `${floor(distance)}`;
-  document.getElementById('stat-crew').innerHTML = `${crew}`;
-  document.getElementById('stat-oxen').innerHTML = `${oxen}`;
-  document.getElementById('stat-food').innerHTML = `${ceil(food)}`;
-  document.getElementById('stat-money').innerHTML = `${money}`;
-  document.getElementById('stat-firepower').innerHTML = `${firepower}`;
-  document.getElementById('stat-weight').innerHTML = `${ceil(weight)}/${capacity}`;
-
-  // update caravan position
-  document.getElementById('caravan').style.left = `${(380 * distance / OregonH.FINAL_DISTANCE)}px`;
-}
-
-// show attack
-showAttack(firepower, gold) {
-  const attackDiv = document.getElementById('attack');
-  attackDiv.classList.remove('hidden');
-
-  // keep properties
-  this.firepower = firepower;
-  this.gold = gold;
-
-  // show firepower
-  document.getElementById('attack-description').innerHTML = `Firepower: ${firepower}`;
-
-  // init once
-  if (!this.attackInitiated) {
-    // fight
-    document.getElementById('fight').addEventListener('click', this.fight.bind(this));
-
-    // run away
-    document.getElementById('runaway').addEventListener('click', this.runaway.bind(this));
-
-    this.attackInitiated = true;
+  notify(message, type) {
+    document.getElementById('updates-area').innerHTML = `<div class="update-${type}">Day ${Math.ceil(this.caravan.day)}: ${message}</div> ${document.getElementById('updates-area').innerHTML}`;
   }
-}
+
+
+  // refresh visual caravan stats
+  refreshStats() {
+  // Destructure some objects for easy access
+    const {
+      day, distance, crew, oxen, food, money, firepower, weight, capacity,
+    } = this.caravan;
+    const { ceil, floor } = Math;
+
+    // modify the dom
+    document.getElementById('stat-day').innerHTML = `${ceil(day)}`; // Math.ceil(this.caravan.day);
+    document.getElementById('stat-distance').innerHTML = `${floor(distance)}`;
+    document.getElementById('stat-crew').innerHTML = `${crew}`;
+    document.getElementById('stat-oxen').innerHTML = `${oxen}`;
+    document.getElementById('stat-food').innerHTML = `${ceil(food)}`;
+    document.getElementById('stat-money').innerHTML = `${money}`;
+    document.getElementById('stat-firepower').innerHTML = `${firepower}`;
+    document.getElementById('stat-weight').innerHTML = `${ceil(weight)}/${capacity}`;
+
+    // update caravan position
+    document.getElementById('caravan').style.left = `${(380 * distance / OregonH.FINAL_DISTANCE)}px`;
+  }
+
+  // show attack
+  showAttack(firepower, gold) {
+    const attackDiv = document.getElementById('attack');
+    attackDiv.classList.remove('hidden');
+
+    // keep properties
+    this.firepower = firepower;
+    this.gold = gold;
+
+    // show firepower
+    document.getElementById('attack-description').innerHTML = `Firepower: ${firepower}`;
+
+    // init once
+    if (!this.attackInitiated) {
+    // fight
+      document.getElementById('fight').addEventListener('click', this.fight.bind(this));
+
+      // run away
+      document.getElementById('runaway').addEventListener('click', this.runaway.bind(this));
+
+      this.attackInitiated = true;
+    }
+  }
 
   // fight
   fight() {
@@ -80,8 +81,8 @@ showAttack(firepower, gold) {
     // resume journey
     document.getElementById('attack').classList.add('hidden');
     this.game.resumeJourney();
-    }
-  
+  }
+
   // running away from enemy
   runaway() {
     // console.log('runway!')
@@ -169,5 +170,8 @@ showAttack(firepower, gold) {
     // update visuals
     OregonH.UI.refreshStats();
     return true;
-    }
   }
+}
+
+
+OregonH.UI = new UI();

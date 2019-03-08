@@ -18,11 +18,8 @@ OregonH.EVENT_PROBABILITY = 0.15;
 OregonH.ENEMY_FIREPOWER_AVG = 5;
 OregonH.ENEMY_GOLD_AVG = 50;
 
-// OregonH.Game = {};
-
 class Game {
   init() {
-  
     // reference ui
     this.ui = OregonH.UI;
 
@@ -86,53 +83,53 @@ class Game {
 
     // we use "bind" so that we can refer to the context "this" inside of the step method
     if (this.gameActive) window.requestAnimationFrame(this.step.bind(this));
+  }
+
+  // update game stats
+  updateGame() {
+    // day update
+    this.caravan.day += OregonH.DAY_PER_STEP;
+
+    // food consumption
+    this.caravan.consumeFood();
+
+    // game over no food
+    if (this.caravan.food === 0) {
+      this.ui.notify('You ran out of food. You have to go home before you starve!', 'negative');
+      this.gameActive = false;
+      return;
     }
 
-    // update game stats
-    updateGame() {
-      // day update
-      this.caravan.day += OregonH.DAY_PER_STEP;
+    // update weight
+    this.caravan.updateWeight();
 
-      // food consumption
-      this.caravan.consumeFood();
+    // update progress
+    this.caravan.updateDistance();
 
-      // game over no food
-      if (this.caravan.food === 0) {
-        this.ui.notify('You ran out of food. You have to go home before you starve!', 'negative');
-        this.gameActive = false;
-        return;
-      }
+    // show stats
+    this.ui.refreshStats();
 
-      // update weight
-      this.caravan.updateWeight();
-
-      // update progress
-      this.caravan.updateDistance();
-
-      // show stats
-      this.ui.refreshStats();
-
-      // check if everyone died
-      if (this.caravan.crew <= 0) {
-        this.caravan.crew = 0;
-        this.ui.notify('All of your pokemon have been knocked out. You passed out!', 'negative');
-        this.gameActive = false;
-        return;
-      }
-
-      // check win game
-      if (this.caravan.distance >= OregonH.FINAL_DISTANCE) {
-        this.ui.notify('You have made it to the Elite Four! Prepare for your biggest battle yet!', 'positive');
-        this.gameActive = false;
-        return;
-      }
-
-      // random events
-      if (Math.random() <= OregonH.EVENT_PROBABILITY) {
-        this.eventManager.generateEvent();
-      }
+    // check if everyone died
+    if (this.caravan.crew <= 0) {
+      this.caravan.crew = 0;
+      this.ui.notify('All of your pokemon have been knocked out. You passed out!', 'negative');
+      this.gameActive = false;
+      return;
     }
-  
+
+    // check win game
+    if (this.caravan.distance >= OregonH.FINAL_DISTANCE) {
+      this.ui.notify('You have made it to the Elite Four! Prepare for your biggest battle yet!', 'positive');
+      this.gameActive = false;
+      return;
+    }
+
+    // random events
+    if (Math.random() <= OregonH.EVENT_PROBABILITY) {
+      this.eventManager.generateEvent();
+    }
+  }
+
   // pause the journey
   pauseJourney() {
     this.gameActive = false;
@@ -145,5 +142,5 @@ class Game {
   }
 }
 
-// init game
+OregonH.Game = new Game();
 OregonH.Game.init();

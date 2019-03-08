@@ -3,17 +3,16 @@
 // eslint-disable-next-line no-var
 var OregonH = OregonH || {};
 
-OregonH.Event = {};
 
 class Event {
   randomInt(n) {
-    const { floor, random } = Math;
+    const {floor, random} = Math;
     return floor(random() * n);
   }
 
   generateEvent() {
     // pick random one
-    const eventIndex = Math.floor(Math.random() * this.eventTypes.length);
+    const eventIndex = this.randomInt(this.eventTypes.length);
     const eventData = this.eventTypes[eventIndex];
 
     // events that consist in updating a stat
@@ -84,6 +83,8 @@ class Event {
     this.ui.showAttack(firepower, gold);
   }
 }
+
+OregonH.Event = new Event();
 
 OregonH.Event.eventTypes = [
   {

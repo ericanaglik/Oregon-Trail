@@ -18,8 +18,6 @@ OregonH.EVENT_PROBABILITY = 0.15;
 OregonH.ENEMY_FIREPOWER_AVG = 5;
 OregonH.ENEMY_GOLD_AVG = 50;
 
-OregonH.Game = {};
-OregonH.Caravan = {};
 
 // ------------------------------------------
 class Caravan {
@@ -34,10 +32,12 @@ class Caravan {
       firepower: 2,
     };
 
-    this.init(this.stats)
+    this.init(this.stats);
   }
 
-  init({ day, distance, crew, food, oxen, money, firepower }) {
+  init({
+    day, distance, crew, food, oxen, money, firepower,
+  }) {
     this.day = day;
     this.distance = distance;
     this.crew = crew;
@@ -46,7 +46,8 @@ class Caravan {
     this.money = money;
     this.firepower = firepower;
   }
-  // update weight and compacity 
+
+  // update weight and compacity
   updateWeight() {
     let droppedFood = 0;
     let droppedGuns = 0;
@@ -80,27 +81,23 @@ class Caravan {
     }
   }
 
-  // food consumption
-  consumeFood() {
-    OregonH.Caravan.consumeFood = function consumeFood() {
-      this.food -= this.crew * OregonH.FOOD_PER_PERSON;
-    
-      if (this.food < 0) {
-        this.food = 0;
-      }
-  }
-
-  //update covered distance
+  // update covered distance
   updateDistance() {
     // the closer to capacity, the slower
     const diff = this.capacity - this.weight;
     const speed = OregonH.SLOW_SPEED + diff / this.capacity * OregonH.FULL_SPEED;
     this.distance += speed;
   }
+
+  // food consumption
+  consumeFood() {
+    this.food -= this.crew * OregonH.FOOD_PER_PERSON;
+
+    if (this.food < 0) {
+      this.food = 0;
+    }
+  }
 }
-// ------------------------------------------
 
 
-
-// init game
-// OregonH.Game.init();
+OregonH.Caravan = new Caravan();
